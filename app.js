@@ -72,4 +72,20 @@
       console.warn("Configura tu Stripe Payment Link en el href de #btnCompra (index.html).");
     });
   }
+
+  /* ---------- Lightbox: ver las capturas en grande al hacer click ---------- */
+  var shots = document.querySelectorAll(".shot img");
+  if (shots.length) {
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.innerHTML = '<button class="lightbox__close" aria-label="Cerrar">\u00d7</button><img alt="Captura ampliada">';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector("img");
+    var cerrar = function () { lb.classList.remove("open"); };
+    shots.forEach(function (img) {
+      img.addEventListener("click", function () { lbImg.src = img.src; lb.classList.add("open"); });
+    });
+    lb.addEventListener("click", cerrar);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") cerrar(); });
+  }
 })();
