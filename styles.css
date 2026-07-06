@@ -204,6 +204,18 @@ svg { display: block; }
 .cmp-col i::after { content: ""; position: absolute; inset: 0; width: var(--w, 70%); background: var(--accent); border-radius: 999px; }
 .show-note { color: var(--faint); font-size: .82rem; margin-top: 1.8rem; }
 
+/* ===================== CAPTURAS (carrusel) ===================== */
+.gallery { padding: clamp(5rem, 11vw, 9rem) 0; overflow: hidden; }
+.gallery__head { max-width: var(--maxw); margin: 0 auto clamp(3rem, 6vw, 4rem); padding: 0 clamp(1.3rem, 5vw, 2rem); }
+.marquee { position: relative; overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee__track { display: flex; width: max-content; animation: marquee 70s linear infinite; will-change: transform; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.shot { flex: 0 0 auto; width: min(440px, 80vw); margin-right: 22px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line-2); box-shadow: 0 14px 34px -20px rgba(15, 30, 50, .16); background: #fff; transition: transform .3s ease; }
+.shot:hover { transform: translateY(-4px); }
+.shot img { width: 100%; height: auto; display: block; }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
 /* ===================== PRICING ===================== */
 .price-card { position: relative; max-width: 520px; margin: 0 auto; border: 1px solid var(--line-2); border-radius: 16px; padding: clamp(2rem, 4vw, 3rem); }
 .price-card__glow { display: none; }
